@@ -62,8 +62,15 @@ namespace ExceptionsDemo
         // Methods
         public void AddCrew(string position, string name)
         {
+            if (CurrentCrewSize() >= CrewCapacity)
+            {
+                throw new Startship1("Capacity exceeded");
+
+            }
+
+
             // If the position exists in the roster, add the name to its list
-            if (roster.ContainsKey(position))
+            else if (roster.ContainsKey(position))
             {
                 roster[position].Add(name);
             }
